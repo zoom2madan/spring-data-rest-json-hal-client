@@ -15,16 +15,28 @@ class IncludeJS {
         }
     }
 
-    getTargets() {
-        return this.targets;
+    get targets() {
+        return this._targets;
     }
 
-    getContents() {
-        return this.contents;
+    set targets(value) {
+        this._targets = value;
     }
 
-    getDefaultContents() {
-        return this.defaultContents;
+    get contents() {
+        return this._contents;
+    }
+
+    set contents(value) {
+        this._contents = value;
+    }
+
+    get defaultContents() {
+        return this._defaultContents;
+    }
+
+    set defaultContents(value) {
+        this._defaultContents = value;
     }
 
     includeAll(startPoint) {
@@ -35,11 +47,11 @@ class IncludeJS {
             if (htmlTarget.hasAttribute("include")) {
                 var fileUri = htmlTarget.getAttribute("include");
                 htmlTarget.removeAttribute("include");
-                if (!this.getTargets().has(fileUri)) {
-                    this.getTargets().set(fileUri, []);
+                if (!this.targets.has(fileUri)) {
+                    this.targets.set(fileUri, []);
                 }
-                this.getTargets().get(fileUri).push(htmlTarget);
-                if (!this.getContents().has(fileUri)) {
+                this.targets.get(fileUri).push(htmlTarget);
+                if (!this.contents.has(fileUri)) {
                     this.loadData(fileUri);
                 }
             }
@@ -69,35 +81,35 @@ class IncludeJS {
         // Consider the state of the request
         switch (readyState) {
             case 0: // Request not initialized
-                this.getContents().set(fileUri, this.getDefaultContents().readyState0);
+                this.contents.set(fileUri, this.defaultContents.readyState0);
                 break;
             case 1: // Server connection established
-                this.getContents().set(fileUri, this.getDefaultContents().readyState1);
+                this.contents.set(fileUri, this.defaultContents.readyState1);
                 break;
             case 2: // Request received
-                this.getContents().set(fileUri, this.getDefaultContents().readyState2);
+                this.contents.set(fileUri, this.defaultContents.readyState2);
                 break;
             case 3: // Processing request
-                this.getContents().set(fileUri, this.getDefaultContents().readyState3);
+                this.contents.set(fileUri, this.defaultContents.readyState3);
                 break;
             case 4: // Request finished and response is ready
-                this.getContents().set(fileUri, this.getDefaultContents().readyState4);
+                this.contents.set(fileUri, this.defaultContents.readyState4);
                 // Now consider the status of the request
                 switch (status) {
                     case 200: // OK
-                        this.getContents().set(fileUri, responseText);
+                        this.contents.set(fileUri, responseText);
                         break;
                     case 403: // Forbidden
-                        this.getContents().set(fileUri, this.getDefaultContents().status403);
+                        this.contents.set(fileUri, this.defaultContents.status403);
                         break;
                     case 404: // Page not found
-                        this.getContents().set(fileUri, this.getDefaultContents().status404);
+                        this.contents.set(fileUri, this.defaultContents.status404);
                         break;
                     case 0:
-                        this.getContents().set(fileUri, this.getDefaultContents().status0);
+                        this.contents.set(fileUri, this.defaultContents.status0);
                         break;
                     default:
-                        this.getContents().set(fileUri, "Unknown status: " + status + " (state: " + readyState + ").");
+                        this.contents.set(fileUri, "Unknown status: " + status + " (state: " + readyState + ").");
                         break;
                 }
                 break;
@@ -106,17 +118,17 @@ class IncludeJS {
     }
 
     updateContent(readyState, status, fileUri) {
-        var htmlTargets = this.getTargets().get(fileUri);
+        var htmlTargets = this.targets.get(fileUri);
         for (var i = 0; i < htmlTargets.length; i++) {
             var htmlTarget = htmlTargets[i];
             if (readyState === 4 && status === 200
                 && htmlTarget
                 && htmlTarget.hasAttribute("replace")
                 && htmlTarget.getAttribute("replace") === "true") {
-                htmlTarget.outerHTML = this.getContents().get(fileUri);
+                htmlTarget.outerHTML = this.contents.get(fileUri);
                 this.includeAll(document);
             } else if (htmlTarget) {
-                htmlTarget.innerHTML = this.getContents().get(fileUri);
+                htmlTarget.innerHTML = this.contents.get(fileUri);
                 this.includeAll(htmlTarget);
             }
         }

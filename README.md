@@ -1,9 +1,11 @@
 # include.js
 Makes it possible and easy to load external data into the webpage without need of backend processing.
 
+## Introduction
 The idea is to split data and view structure, so that data can be stored in data only files, where view is simplified without need to contain data in it at the begining. The HTML tags that should contain particular data load it asynchroniusly afterwards. This also allows developers to deploy data (dynamic) content and static content independent. Another pro is that in addition it allows to move static content into CDN for fast loading and data either also in CDN or into another server that allows dynamic altering (consider cross-origin!).
 
 The method is similar to the LaTeX's `\include{path/to/file.ext}` mechanismus and also works for recursive inclusion.
+include.js is a short Javascript code, which adds a possibility to any HTML element to exchange its innerHTML or outerHTML to an external text file and makes it easy to load and bind an external or additional data to the website just adding an attribute to the element. It works like LaTeX's \include{filename.ext}. Concept is very simple and can be called lazy loading like lazy evaluation in Haskell. The included data is loaded after the completion of the loading of the page itself.
 
 There is a posibility to build an endless loop e.g. a data that includes itself again. Please use the mechanismus wisely.
 In this case, I do not take the responsibility, you are responsible if you build such a recursion or endless loop.

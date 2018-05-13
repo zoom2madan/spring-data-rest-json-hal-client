@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
     entry: './src/include.js',
@@ -15,6 +16,9 @@ module.exports = {
                 use: {
                     loader: 'babel-loader'
                 }
+            },
+            {
+                test: /\.html/,
             }
         ]
     },
@@ -22,11 +26,11 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: './src/index.html'
         }),
-        new HtmlWebpackPlugin({
-            template: './src/part1.html'
-        }),
-        new HtmlWebpackPlugin({
-            template: './src/part2.html'
-        })
+        new CopyWebpackPlugin([
+            {
+                from: './src/part*.html',
+                to: '[name].[ext]'
+            }
+        ])
     ]
 }

@@ -10,6 +10,16 @@ include.js is a short Javascript code, which adds a possibility to any HTML elem
 There is a posibility to build an endless loop e.g. a data that includes itself again. Please use the mechanismus wisely.
 In this case, I do not take the responsibility, you are responsible if you build such a recursion or endless loop.
 
+## Installation (Directly)
+Just download the latest release from github and bind it as described in the How to section.
+
+## Installation (NPM)
+The latest release is always published into npmjs so you can bind the package also using `npm`.
+```javascript
+npm install --save-dev html-include.js
+```
+The name of the package in npmjs is `html-include.js` with `html-` prefix because the package name `include.js` was already taken by another project.
+
 ## How to (a simple example)
 If you have an HTML file similar the one above:
 ```html

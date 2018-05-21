@@ -18,7 +18,7 @@ The latest release is always published into npmjs so you can bind the package al
 ```javascript
 npm install --save-dev html-include.js
 ```
-The name of the package in npmjs is `html-include.js` with `html-` prefix because the package name `include.js` was already taken by another project.
+The name of the package in npmjs is `html-include.js` with `html-` prefix because the package name `include.js` was already taken by another project. How to use it as a npm package please learn how to use npm. After that just follow the instructions below.
 
 ## How to (a simple example)
 If you have an HTML file similar the one above:

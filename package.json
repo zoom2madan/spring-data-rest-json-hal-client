@@ -1,5 +1,5 @@
 {
-  "name": "include.js",
+  "name": "html-include.js",
   "version": "1.0.0",
   "description": "LaTeX like include in HTML",
   "main": "src/include.js",
@@ -20,7 +20,7 @@
     "frontend",
     "browser"
   ],
-  "author": "Rashad Asgarbayli",
+  "author": "Rashad Asgarbayli <rashad2985@gmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/rashad2985/include.js/issues"

@@ -23,12 +23,12 @@ module.exports = {
         ]
     },
     plugins: [
-        new HtmlWebpackPlugin({
+        /*new HtmlWebpackPlugin({
             template: './src/index.html'
-        }),
+        }),*/
         new CopyWebpackPlugin([
             {
-                from: './src/part*.html',
+                from: './src/*.html',
                 to: '[name].[ext]'
             }
         ])

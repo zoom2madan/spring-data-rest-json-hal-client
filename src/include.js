@@ -31,7 +31,7 @@ class IncludeJS {
     includeAll(startPoint) {
         startPoint = !startPoint ? document : startPoint;
         let htmlTargets = startPoint.querySelectorAll('[include]');
-        /* Map targets using the file URIs and send asynchron requests */
+        /* Map targets using the file URIs and send asynchronous requests */
         htmlTargets.forEach(htmlTarget => {
             if (htmlTarget.hasAttribute('include')) {
                 let fileUri = htmlTarget.getAttribute('include');

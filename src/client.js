@@ -1,7 +1,3 @@
-# spring-data-rest-json-hal-client
-Preconfigured rest npm package that acts like JSON+HAL JS-Client for Spring Data REST backend.
-
-```javascript
 'use strict';
 
 const rest = require('rest');
@@ -19,15 +15,3 @@ const client = rest
   .wrap(errorCode);
 
 module.exports = client;
-```
-
-## How to use
-First, import it into your Javascript file where you are going to use it:
-```javascript
-import client from 'spring-data-rest-json-hal-client';
-```
- Then used it in the same fragment as follows:
-```javascript
-// TODO
-client(...).then();
-```

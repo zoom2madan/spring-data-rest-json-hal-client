@@ -1,12 +1,10 @@
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
-    entry: './src/include.js',
+    entry: './src/client.js',
     output: {
         path: path.join(__dirname, '/build'),
-        filename: 'include.js'
+        filename: 'client.js'
     },
     module: {
         rules: [
@@ -21,16 +19,5 @@ module.exports = {
               }
             }
         ]
-    },
-    plugins: [
-        /*new HtmlWebpackPlugin({
-            template: './src/index.html'
-        }),*/
-        new CopyWebpackPlugin([
-            {
-                from: './src/*.html',
-                to: '[name].[ext]'
-            }
-        ])
-    ]
-}
+    }
+};

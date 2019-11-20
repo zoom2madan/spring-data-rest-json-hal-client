@@ -1,5 +1,5 @@
 {
-  "name": "spring-data-rest-json-hal-client",
+  "name": "@khara/spring-data-rest-json-hal-client",
   "version": "1.0.0",
   "description": "Preconfigured rest npm package that acts like JSON+HAL JS-Client for Spring Data REST backend.",
   "main": "src/client.js",

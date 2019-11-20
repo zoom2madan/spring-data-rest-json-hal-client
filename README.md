@@ -28,6 +28,50 @@ import client from 'spring-data-rest-json-hal-client';
 ```
  Then used it in the same fragment as follows:
 ```javascript
-// TODO
-client(...).then();
+client(/* Your request type and its required paramenters */).then(/* What should be done after request gets responded */);
+```
+
+## Examples
+
+### GET
+
+```javascript
+client({method: "GET", path: "/some/path"})
+  .then(response => { console.log("Response:", response)});
+```
+
+```javascript
+client({method: "GET", path: "/some/path"})
+  .then(response => { console.log("Success:", response)}, response => { console.log("Error:", response)});
+```
+
+### PUT
+
+```javascript
+client({method: 'PUT', path: "/some/path", entity: {firstName: "Max", lastName: "Mustermann"}, headers: {'Content-Type': 'application/json'}})
+  .then(response => {console.log("Success:", response)}, response =>
+    {
+      if (response.status.code === 403) {
+        alert('ACCESS DENIED: You are not authorized to update!');
+      } else if (response.status.code === 412) {
+        alert('DENIED: Your copy is stale!');
+      } else {
+        console.log(response);
+      }
+    });
+```
+
+### DELETE
+
+```javascript
+client({method: "DELETE", path: "/some/path"})
+  .then(response => {console.log("Success:", response)}, response =>
+    {
+      if (response.status.code === 403) {
+        alert('ACCESS DENIED: You are not authorized to delete!');
+      }
+      else {
+        console.log(response);
+      }
+    });
 ```

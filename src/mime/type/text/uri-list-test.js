@@ -13,11 +13,11 @@
 	assert = buster.assertions.assert;
 	refute = buster.assertions.refute;
 
-	define('test/mime/type/text/url-list-test', function (require) {
+	define('test/mime/type/text/uri-list-test', function (require) {
 
-		let urlList = require('./url-list');
+		let urlList = require('./uri-list');
 
-		buster.testCase('rest/mime/type/text/url-list', {
+		buster.testCase('rest/mime/type/text/uri-list', {
 			'should not change when writing string values': function () {
 				assert.equals('7', urlList.write('7'));
 			},

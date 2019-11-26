@@ -32,7 +32,7 @@ module.exports = {
 		}
 
 		if (typeof obj === 'string') {
-			return obj.trim().replace(/\r/, '').replace(/\n/, '').trim() + '\r\n';
+			return obj.trim().replace(/\r/, '').replace(/\n/, '').trim();
 		}
 
 		if (!Array.isArray(obj)) {

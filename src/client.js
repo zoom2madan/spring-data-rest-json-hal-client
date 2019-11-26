@@ -10,7 +10,7 @@ registry.register('application/hal+json', require('rest/mime/type/application/ha
 registry.register('application/schema+json', require('rest/mime/type/application/json'));
 registry.register('application/json', require('rest/mime/type/application/json'));
 registry.register('text/plain', require('rest/mime/type/text/plain'));
-registry.register('text/url-list', require('./mime/type/text/url-list'));
+registry.register('text/uri-list', require('./mime/type/text/uri-list'));
 
 const client = rest
   .wrap(mime, {registry: registry})

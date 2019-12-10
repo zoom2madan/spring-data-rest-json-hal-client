@@ -16,4 +16,24 @@ const client = rest
   .wrap(mime, {registry: registry})
   .wrap(errorCode);
 
-module.exports = client;
+export default client;
+
+export function get(path, headers) {
+  return client({method: "GET", path: path, headers: headers});
+}
+
+export function post(path, entity, headers) {
+  return client({method: 'POST', path: path, entity: entity, headers: headers});
+}
+
+export function put(path, entity, headers) {
+  return client({method: 'PUT', path: path, entity: entity, headers: headers});
+}
+
+export function patch(path, entity, headers) {
+  return client({method: 'PATCH', path: path, entity: entity, headers: headers});
+}
+
+export function del(path, headers) {
+  return client({method: "DELETE", path: path, headers: headers});
+}

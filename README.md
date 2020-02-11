@@ -25,35 +25,118 @@ module.exports = client;
 ```
 
 ## How to use
-First, import it into your Javascript file where you are going to use it:
+First, import the needed operation (`get`, `post`, `put`, `patch`, `del` or `client` for backwards compatibility or more complicated operations) into your Javascript file where you are going to use it:
 ```javascript
-import client from 'spring-data-rest-json-hal-client';
+import {get} from 'spring-data-rest-json-hal-client';
 ```
- Then used it in the same fragment as follows:
+or
 ```javascript
+import {post} from 'spring-data-rest-json-hal-client';
+```
+or
+```javascript
+import {put} from 'spring-data-rest-json-hal-client';
+```
+or
+```javascript
+import {patch} from 'spring-data-rest-json-hal-client';
+```
+or
+```javascript
+import {del} from 'spring-data-rest-json-hal-client';
+```
+or
+```javascript
+import {client} from 'spring-data-rest-json-hal-client';
+```
+(`client` is for backwards compatibility or for real complicated operations that are not covered in simple requests) or more than one
+```javascript
+import {get, post, del} from 'spring-data-rest-json-hal-client';
+```
+ Then use it in the same fragment as in the following examples:
+```javascript
+...
+get('/api/users/all').then(successfulResponse => console.log(successfulResponse), error => console.error(error));
+get('/api/users/all', {'Content-Type': 'application/json'}).then(successfulResponse => console.log(successfulResponse), error => console.error(error));
+...
 client(/* Your request type and its required paramenters */).then(/* What should be done after request gets responded */);
+...
 ```
 
 ## Examples
-
+`path` is always required logically, but headers and entity are optional depending from your services.
 ### GET
 
 ```javascript
-client({method: "GET", path: "/some/path"})
-  .then(response => { console.log("Response:", response)});
+get('/some/path').then(successfulResponse => console.log(successfulResponse), error => console.error(error));
+```
+or with headers
+```javascript
+get('/some/path', {'Content-Type': 'application/json'}).then(successfulResponse => console.log(successfulResponse), error => console.error(error));
+```
+or backwards compatible
+```javascript
+client({method: 'GET', path: '/some/path'})
+  .then(response => { console.log('Success:', response)}, response => { console.log('Error:', response)});
+...
+client({method: 'GET', path: '/some/path', headers: {'Content-Type': 'application/json'}})
+  .then(response => { console.log('Success:', response)}, response => { console.log('Error:', response)});
 ```
 
+### POST
+
 ```javascript
-client({method: "GET", path: "/some/path"})
-  .then(response => { console.log("Success:", response)}, response => { console.log("Error:", response)});
+post('/some/path', {firstName: 'Max', lastName: 'Mustermann'}, {'Content-Type': 'application/json'})
+  .then(
+    successfulResponse => {console.log('Success:', successfulResponse)},
+    errorResponse => {
+      if (errorResponse.status.code === 403) {
+        alert('ACCESS DENIED: You are not authorized to update!');
+      } else if (errorResponse.status.code === 412) {
+        alert('DENIED: Your copy is stale!');
+      } else {
+        console.log(errorResponse);
+      }
+    });
+```
+or backwards compatible
+```javascript
+client({method: 'POST', path: '/some/path', entity: {firstName: 'Max', lastName: 'Mustermann'}, headers: {'Content-Type': 'application/json'}})
+  .then(
+    response => {console.log('Success:', response)},
+    response => {
+      if (response.status.code === 403) {
+        alert('ACCESS DENIED: You are not authorized to update!');
+      } else if (response.status.code === 412) {
+        alert('DENIED: Your copy is stale!');
+      } else {
+        console.log(response);
+      }
+    });
 ```
 
 ### PUT
 
 ```javascript
-client({method: 'PUT', path: "/some/path", entity: {firstName: "Max", lastName: "Mustermann"}, headers: {'Content-Type': 'application/json'}})
-  .then(response => {console.log("Success:", response)}, response =>
-    {
+put('/some/path', {firstName: 'Max', lastName: 'Mustermann'}, {'Content-Type': 'application/json'})
+  .then(
+    successfulResponse => {console.log('Success:', successfulResponse)},
+    errorResponse => {
+      if (errorResponse.status.code === 403) {
+        alert('ACCESS DENIED: You are not authorized to update!');
+      } else if (errorResponse.status.code === 412) {
+        alert('DENIED: Your copy is stale!');
+      } else {
+        console.log(errorResponse);
+      }
+    });
+```
+or backwards compatible
+```javascript
+client({method: 'PUT', path: '/some/path', entity: {firstName: 'Max', lastName: 'Mustermann'}, headers: {'Content-Type': 'application/json'}})
+  .then(
+    response => {console.log('Success:', response)},
+    response => {
       if (response.status.code === 403) {
         alert('ACCESS DENIED: You are not authorized to update!');
       } else if (response.status.code === 412) {
@@ -67,9 +150,23 @@ client({method: 'PUT', path: "/some/path", entity: {firstName: "Max", lastName: 
 ### DELETE
 
 ```javascript
-client({method: "DELETE", path: "/some/path"})
+del('/some/path', {'Content-Type': 'application/json'})
   .then(response => {console.log("Success:", response)}, response =>
     {
+      if (response.status.code === 403) {
+        alert('ACCESS DENIED: You are not authorized to delete!');
+      }
+      else {
+        console.log(response);
+      }
+    });
+```
+or backwards compatible
+```javascript
+client({method: 'DELETE', path: '/some/path', headers: {'Content-Type': 'application/json'}})
+  .then(
+    response => {console.log('Success:', response)},
+    response => {
       if (response.status.code === 403) {
         alert('ACCESS DENIED: You are not authorized to delete!');
       }

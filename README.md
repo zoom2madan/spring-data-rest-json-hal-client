@@ -27,31 +27,31 @@ module.exports = client;
 ## How to use
 First, import the needed operation (`get`, `post`, `put`, `patch`, `del` or `client` for backwards compatibility or more complicated operations) into your Javascript file where you are going to use it:
 ```javascript
-import {get} from 'spring-data-rest-json-hal-client';
+import {get} from '@khara/spring-data-rest-json-hal-client';
 ```
 or
 ```javascript
-import {post} from 'spring-data-rest-json-hal-client';
+import {post} from '@khara/spring-data-rest-json-hal-client';
 ```
 or
 ```javascript
-import {put} from 'spring-data-rest-json-hal-client';
+import {put} from '@khara/spring-data-rest-json-hal-client';
 ```
 or
 ```javascript
-import {patch} from 'spring-data-rest-json-hal-client';
+import {patch} from '@khara/spring-data-rest-json-hal-client';
 ```
 or
 ```javascript
-import {del} from 'spring-data-rest-json-hal-client';
+import {del} from '@khara/spring-data-rest-json-hal-client';
 ```
 or
 ```javascript
-import {client} from 'spring-data-rest-json-hal-client';
+import {client} from '@khara/spring-data-rest-json-hal-client';
 ```
 (`client` is for backwards compatibility or for real complicated operations that are not covered in simple requests) or more than one
 ```javascript
-import {get, post, del} from 'spring-data-rest-json-hal-client';
+import {get, post, del} from '@khara/spring-data-rest-json-hal-client';
 ```
  Then use it in the same fragment as in the following examples:
 ```javascript

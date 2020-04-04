@@ -9,6 +9,7 @@ const registry = baseRegistry.child();
 registry.register('application/hal+json', require('rest/mime/type/application/hal'));
 registry.register('application/schema+json', require('rest/mime/type/application/json'));
 registry.register('application/json', require('rest/mime/type/application/json'));
+registry.register('multipart/form-data', require('rest/mime/type/multipart/form-data'));
 registry.register('text/plain', require('rest/mime/type/text/plain'));
 registry.register('text/uri-list', require('./mime/type/text/uri-list'));
 

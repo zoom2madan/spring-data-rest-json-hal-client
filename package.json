@@ -1,6 +1,6 @@
 {
   "name": "@khara/spring-data-rest-json-hal-client",
-  "version": "2.0.0",
+  "version": "2.1.0-BETA",
   "description": "Preconfigured rest npm package that acts like JSON+HAL JS-Client for Spring Data REST backend.",
   "main": "src/client.js",
   "scripts": {
@@ -29,14 +29,14 @@
   },
   "homepage": "https://gitlab.com/rashad2985/spring-data-rest-json-hal-client/blob/master/README.md",
   "devDependencies": {
-    "@babel/cli": "7.8.4",
-    "@babel/core": "7.8.4",
-    "@babel/preset-env": "7.8.4",
-    "babel-loader": "8.0.6",
-    "buster": "0.7.18",
-    "webpack": "4.41.5",
-    "webpack-cli": "3.3.10",
-    "webpack-dev-server": "3.10.3"
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.0",
+    "babel-loader": "^8.1.0",
+    "buster": "^0.7.18",
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3"
   },
   "dependencies": {
     "rest": "^2.0.0"

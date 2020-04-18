@@ -32,25 +32,20 @@ module.exports = {
 		}
 
 		if (typeof obj === 'string') {
-			return obj.trim().replace(/\r/, '').replace(/\n/, '').trim();
+			return obj.trim()
+				.replace(/\r/, '')
+				.replace(/\n/, '')
+				.trim() + '\r\n';
 		}
 
 		if (!Array.isArray(obj)) {
 			return '';
 		}
 
-		let result = '';
-
-		obj.filter((line) => line && line !== null && line !== '')
-			.map((line) => line.trim())
+		let result = obj.filter((line) => line && line !== null && line !== '' && !line.startsWith('#'))
+			.map((line) => line.trim().replace(/\r/, '').replace(/\n/, '').trim())
 			.filter((line) => line && line !== null && line !== '' && !line.startsWith('#'))
-			.map((line) => line.replace(/\r/, ''))
-			.map((line) => line.replace(/\n/, ''))
-			.map((line) => line.trim())
-			.filter((line) => line && line !== null && line !== '' && !line.startsWith('#'))
-			.map((line) => line + '\r\n')
-			.forEach((line) => result = result + line);
-
+			.join('\r\n');
 		return result;
 	}
 };

@@ -2,17 +2,21 @@
   "name": "@khara/spring-data-rest-json-hal-client",
   "version": "2.1.1",
   "description": "Preconfigured rest npm package that acts like HAL+JSON JS-Client for Spring Data REST backend.",
-  "main": "src/client.js",
+  "main": "src/index.ts",
+  "dependencies": {
+    "@types/rest": "^1.3.29",
+    "rest": "^2.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^3.8.3"
+  },
   "scripts": {
-    "start": "webpack-dev-server --mode development --open --hot",
-    "build": "webpack --mode none",
-    "build:prod": "webpack --mode production",
-    "check:updates": "npm outdated",
-    "publish": "npm publish"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc"
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@gitlab.com:rashad2985/spring-data-rest-json-hal-client.git"
+    "url": "git+ssh://git@gitlab.com/rashad2985/spring-data-rest-json-hal-client.git"
   },
   "keywords": [
     "spring",
@@ -27,18 +31,5 @@
   "bugs": {
     "url": "https://gitlab.com/rashad2985/spring-data-rest-json-hal-client/issues"
   },
-  "homepage": "https://gitlab.com/rashad2985/spring-data-rest-json-hal-client/blob/master/README.md",
-  "devDependencies": {
-    "@babel/cli": "^7.8.4",
-    "@babel/core": "^7.9.0",
-    "@babel/preset-env": "^7.9.0",
-    "babel-loader": "^8.1.0",
-    "buster": "^0.7.18",
-    "webpack": "^4.42.1",
-    "webpack-cli": "^3.3.11",
-    "webpack-dev-server": "^3.10.3"
-  },
-  "dependencies": {
-    "rest": "^2.0.0"
-  }
+  "homepage": "https://gitlab.com/rashad2985/spring-data-rest-json-hal-client#readme"
 }

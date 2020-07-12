@@ -1,4 +1,4 @@
-# spring-data-rest-json-hal-client
+# spring-data-rest-json-hal-index
 Preconfigured rest npm package that acts like JSON+HAL JS-Client for Spring Data REST backend.
 
 ```javascript
@@ -17,41 +17,41 @@ registry.register('multipart/form-data', require('rest/mime/type/multipart/form-
 registry.register('text/plain', require('rest/mime/type/text/plain'));
 registry.register('text/uri-list', require('./mime/type/text/uri-list'));
 
-const client = rest
+const index = rest
   .wrap(mime, {registry: registry})
   .wrap(errorCode);
 
-module.exports = client;
+module.exports = index;
 ```
 
 ## How to use
-First, import the needed operation (`get`, `post`, `put`, `patch`, `del` or `client` for backwards compatibility or more complicated operations) into your Javascript file where you are going to use it:
+First, import the needed operation (`get`, `post`, `put`, `patch`, `del` or `index` for backwards compatibility or more complicated operations) into your Javascript file where you are going to use it:
 ```javascript
-import {get} from '@khara/spring-data-rest-json-hal-client';
+import {get} from '@khara/spring-data-rest-json-hal-index';
 ```
 or
 ```javascript
-import {post} from '@khara/spring-data-rest-json-hal-client';
+import {post} from '@khara/spring-data-rest-json-hal-index';
 ```
 or
 ```javascript
-import {put} from '@khara/spring-data-rest-json-hal-client';
+import {put} from '@khara/spring-data-rest-json-hal-index';
 ```
 or
 ```javascript
-import {patch} from '@khara/spring-data-rest-json-hal-client';
+import {patch} from '@khara/spring-data-rest-json-hal-index';
 ```
 or
 ```javascript
-import {del} from '@khara/spring-data-rest-json-hal-client';
+import {del} from '@khara/spring-data-rest-json-hal-index';
 ```
 or
 ```javascript
-import {client} from '@khara/spring-data-rest-json-hal-client';
+import {index} from '@khara/spring-data-rest-json-hal-index';
 ```
-(`client` is for backwards compatibility or for real complicated operations that are not covered in simple requests) or more than one
+(`index` is for backwards compatibility or for real complicated operations that are not covered in simple requests) or more than one
 ```javascript
-import {get, post, del} from '@khara/spring-data-rest-json-hal-client';
+import {get, post, del} from '@khara/spring-data-rest-json-hal-index';
 ```
  Then use it in the same fragment as in the following examples:
 ```javascript
@@ -59,7 +59,7 @@ import {get, post, del} from '@khara/spring-data-rest-json-hal-client';
 get('/api/users/all').then(successfulResponse => console.log(successfulResponse), error => console.error(error));
 get('/api/users/all', {'Content-Type': 'application/json'}).then(successfulResponse => console.log(successfulResponse), error => console.error(error));
 ...
-client(/* Your request type and its required paramenters */).then(/* What should be done after request gets responded */);
+index(/* Your request type and its required paramenters */).then(/* What should be done after request gets responded */);
 ...
 ```
 
@@ -76,10 +76,10 @@ get('/some/path', {'Content-Type': 'application/json'}).then(successfulResponse 
 ```
 or backwards compatible
 ```javascript
-client({method: 'GET', path: '/some/path'})
+index({method: 'GET', path: '/some/path'})
   .then(response => { console.log('Success:', response)}, response => { console.log('Error:', response)});
 ...
-client({method: 'GET', path: '/some/path', headers: {'Content-Type': 'application/json'}})
+index({method: 'GET', path: '/some/path', headers: {'Content-Type': 'application/json'}})
   .then(response => { console.log('Success:', response)}, response => { console.log('Error:', response)});
 ```
 
@@ -101,7 +101,7 @@ post('/some/path', {firstName: 'Max', lastName: 'Mustermann'}, {'Content-Type': 
 ```
 or backwards compatible
 ```javascript
-client({method: 'POST', path: '/some/path', entity: {firstName: 'Max', lastName: 'Mustermann'}, headers: {'Content-Type': 'application/json'}})
+index({method: 'POST', path: '/some/path', entity: {firstName: 'Max', lastName: 'Mustermann'}, headers: {'Content-Type': 'application/json'}})
   .then(
     response => {console.log('Success:', response)},
     response => {
@@ -133,7 +133,7 @@ put('/some/path', {firstName: 'Max', lastName: 'Mustermann'}, {'Content-Type': '
 ```
 or backwards compatible
 ```javascript
-client({method: 'PUT', path: '/some/path', entity: {firstName: 'Max', lastName: 'Mustermann'}, headers: {'Content-Type': 'application/json'}})
+index({method: 'PUT', path: '/some/path', entity: {firstName: 'Max', lastName: 'Mustermann'}, headers: {'Content-Type': 'application/json'}})
   .then(
     response => {console.log('Success:', response)},
     response => {
@@ -163,7 +163,7 @@ del('/some/path', {'Content-Type': 'application/json'})
 ```
 or backwards compatible
 ```javascript
-client({method: 'DELETE', path: '/some/path', headers: {'Content-Type': 'application/json'}})
+index({method: 'DELETE', path: '/some/path', headers: {'Content-Type': 'application/json'}})
   .then(
     response => {console.log('Success:', response)},
     response => {

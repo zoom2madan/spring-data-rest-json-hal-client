@@ -1,13 +1,16 @@
 'use strict';
 
-const rest = require('rest');
-const mime = require('rest/interceptor/mime');
-const errorCode = require('rest/interceptor/errorCode');
-const baseRegistry = require('rest/mime/registry');
+import rest from "rest";
+import mime from "rest/interceptor/mime";
+import errorCode from "rest/interceptor/errorCode";
+import baseRegistry from "rest/mime/registry";
+
+import applicationHal from "rest/mime/type/application/hal";
+import applicationJson from "rest/mime/type/application/json";
 
 const registry = baseRegistry.child();
-registry.register('application/hal+json', require('rest/mime/type/application/hal'));
-registry.register('application/schema+json', require('rest/mime/type/application/json'));
+registry.register('application/hal+json', applicationHal);
+registry.register('application/schema+json', applicationJson);
 registry.register('application/json', require('rest/mime/type/application/json'));
 registry.register('multipart/form-data', require('rest/mime/type/multipart/form-data'));
 registry.register('text/plain', require('rest/mime/type/text/plain'));
